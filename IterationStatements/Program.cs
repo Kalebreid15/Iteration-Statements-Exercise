@@ -29,20 +29,12 @@
         //    - Method Signature: bool AreNumbersEqual(int num1, int num2)
         //    - Returns true if the numbers are equal, false otherwise.
 
-        public static void AreNumbersEqual(int num1, int num2)
+        public static bool AreNumbersEqual(int num1, int num2)
         {
-            if (num1 == num2) ;
-            {
-                Console.WriteLine($"{num1} and {num2} are equal: {num1 == num2}");
-            }
-            else
-
-
-            {
-                Console.WriteLine($"{num1} and {num2} are not equal: {num1 != num2}");
-            }
+            bool result = num1 == num2;
+            Console.WriteLine($"Are {num1} and {num2} equal? {result}");
+            return result;
         }
-
 
 
         // 4. Write a method that checks if a given number is even or odd.
@@ -50,16 +42,11 @@
         //    - Returns true if the number is even, false if odd.
 
 
-        public static void EvenOrOdd(int number)
+        public static bool IsEven(int number)
         {
-            if (number % 2 == 0)
-            {
-                Console.WriteLine($"{number} is even.");
-            }
-            else
-            {
-                Console.WriteLine($"{number} is odd.");
-            }
+            bool result = (number % 2 == 0);
+            Console.WriteLine($"{number} is {(result ? "even" : "odd")}");
+            return result;
         }
 
         // 5. Write a method that checks if a given number is positive or negative.
@@ -87,7 +74,7 @@
         //    - Returns true if the candidate can vote, false otherwise.
         //    - Hint: Use `int.Parse()` or the safer `int.TryParse()` for extra practice in handling user input.
 
-        public static void CanVote()
+        public static void CanVote(int age)
         {
             {
                 Console.WriteLine("Enter age: ");
@@ -118,7 +105,7 @@
         //    - Method Signature: bool IsInRange(int number)
         //    - Returns true if the number is within the range, false otherwise.
 
-        public static void IsInRange()
+        public static void IsInRange(int age)
         {
             Console.WriteLine("Enter a number");
             var canParse = int.TryParse(Console.ReadLine(), out int number);
@@ -148,6 +135,7 @@
         {
             for (int i = 1; i <= 12; i++)
             {
+                Console.WriteLine($"Multiplication Table for {number}:");
                 Console.WriteLine($"{i} * {number} = {i * number}");
             }
         }
@@ -156,14 +144,24 @@
         // Use various test cases to ensure they work as expected.        
         static void Main(string[] args)
         {
-            PrintNumbers1000();
             PrintEveryThirdNumber();
+
+            //Define Test Variables
+            int num1 = 5;
+            int num2 = 5;
+            int number = 4;
+            int age = 20;
+
             AreNumbersEqual(num1, num2);
-            EvenOrOdd(number);
+            IsEven(number);
             IsPositive(number);
             CanVote(age);
-            IsInRange();
+            IsInRange(number);
             DisplayMultiplicationTable(number);
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+
         }
     }
 }
